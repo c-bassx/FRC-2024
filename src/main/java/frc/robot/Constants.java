@@ -190,4 +190,21 @@ public final class Constants {
         public static final Map<Alliance, Pose3d> speakers = Map.of(Alliance.Red, new Pose3d(), Alliance.Blue, new Pose3d());
         public static final Map<Alliance, Pose2d> amps = Map.of(Alliance.Red, new Pose2d(), Alliance.Blue, new Pose2d());
     }
+
+    public static final class DeflectorConstants{
+        public static final int deflectorMotorID = 20;
+        public static final int upSetPoint = 15;
+        public static final int downSetPoint = 0;
+
+        public static enum DeflectorState{
+            UP(upSetPoint),
+            DOWN(downSetPoint),
+            OFF(0);
+
+            public int setPoint;
+            DeflectorState(int setPoint){
+                this.setPoint = setPoint;
+            }
+        }
+    }
 }
