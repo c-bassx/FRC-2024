@@ -10,10 +10,12 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Constants.DeflectorConstants.DeflectorState;
 
 public class Kinesthetics extends SubsystemBase {
     // Subsystem Information
     private Swerve s_Swerve;
+    private Deflector s_Deflector;
 
     // Sensor Information
     private Pigeon2 gyro;
@@ -24,9 +26,10 @@ public class Kinesthetics extends SubsystemBase {
     private DriverStation.Alliance alliance;
     private SwerveDrivePoseEstimator poseEstimator;
 
-    public Kinesthetics(Swerve s) {
+    public Kinesthetics(Swerve s, Deflector d) {
         s_Swerve = s;
         s_Swerve.setKinesthetics(this);
+        s_Deflector = d;
 
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
         gyro.getConfigurator().apply(new Pigeon2Configuration());
@@ -81,5 +84,13 @@ public class Kinesthetics extends SubsystemBase {
 
     public void zeroHeading(){
         poseEstimator.resetPosition(getGyroYaw(), s_Swerve.getModulePositions(), new Pose2d(getPose().getTranslation(), new Rotation2d()));
+    }
+
+    public void setDeflectorState(DeflectorState d){
+        s_Deflector.setGoalPos(d.setPoint);
+    }
+
+    public void stopDeflectorMotor(){
+        s_Deflector.stopMotor();
     }
 }
