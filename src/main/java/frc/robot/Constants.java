@@ -153,16 +153,10 @@ public final class Constants {
     }
 
     public static final class Intake {
-<<<<<<< HEAD
         public static final int angleMotorID = 1;
-        public static final int intakeMotorID = 2;
-        public static final int feederMotorID = 3;
-=======
-        public static final int[] angleMotorIDs = {1, 2};
         public static final int intakeMotorID = 3;
         public static final int feederMotorID = 4;
         public static final int beamBreakID = 0; // PWM
->>>>>>> b15f1f960b0d1031fc8327318bcadfc4cd9b7596
 
         public static final double pitchTolerance = Math.PI/64;
 
@@ -214,6 +208,7 @@ public final class Constants {
         public static final int deflectorMotorID = 20;
         public static final int upSetPoint = 15;
         public static final int downSetPoint = 0;
+        public static final int deflectorTolerance = 2;
 
         public static enum DeflectorState{
             UP(upSetPoint),

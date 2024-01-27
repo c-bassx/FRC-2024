@@ -20,5 +20,9 @@ public class Deflector extends SubsystemBase{
     public void stopMotor(){
         motor.stopMotor();
     }
+
+    public double getPos(){
+        return motor.getEncoder().getPosition();
+    }
 }
 

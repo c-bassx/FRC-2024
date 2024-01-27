@@ -93,4 +93,8 @@ public class Kinesthetics extends SubsystemBase {
     public void stopDeflectorMotor(){
         s_Deflector.stopMotor();
     }
+
+    public double getDeflectorPos(){
+        return s_Deflector.getPos();
+    }
 }
