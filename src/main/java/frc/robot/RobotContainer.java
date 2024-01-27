@@ -34,9 +34,10 @@ public class RobotContainer {
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
+    private final Deflector s_Deflector = new Deflector();
     private final Shooter s_Shooter = new Shooter();
 
-    private final Kinesthetics kinesthetics = new Kinesthetics(s_Swerve);
+    private final Kinesthetics kinesthetics = new Kinesthetics(s_Swerve, s_Deflector);
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
