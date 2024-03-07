@@ -37,7 +37,7 @@ public class RobotContainer {
     private final Intake s_Intake = new Intake();
 
     private final Kinesthetics kinesthetics = new Kinesthetics(s_Swerve);
-    private final Databoard databoard = new Databoard(kinesthetics);
+    // private final Vision s_Vision = new Vision(kinesthetics);
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
@@ -55,7 +55,6 @@ public class RobotContainer {
         configureButtonBindings();
 
         DriverStation.silenceJoystickConnectionWarning(true);
-        databoard.getCommand().schedule();
     }
 
     /**
