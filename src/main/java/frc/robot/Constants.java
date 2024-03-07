@@ -6,6 +6,7 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
@@ -202,17 +203,22 @@ public final class Constants {
         public static final double spinTolerance = Math.PI/256;
 
         public static final double pitchOffset = Units.degreesToRotations(-3);
+        public static final double minimumPitch = Units.degreesToRadians(17);
+        public static final double maximumPitch = Units.rotationsToRadians(0.2);
         public static final double neckSpeed = 0.3; // volts / 12, -1 to 1
         
         /** @param shooterFeedForward kS radians / second, kV radians / second per meter / second */
         public static final SimpleMotorFeedforward shooterFeedForward = new SimpleMotorFeedforward(-41.57843503917089, 28.371771957538527);
+
+        // TODO: This must be tuned to specific robot
+        public static final PIDController shooterPID = new PIDController(0.7, 0, 0);
+        public static final double kF = 0.0;
     }
 
     public static final class CommandConstants {
         public static final double bumperWidth = Units.inchesToMeters(2.75);
 
         public static final double shooterSpinMax = 30; // meters / second
-        public static final double shooterHandoffAngle = Units.rotationsToRadians(0.04);
         public static final double speakerShooterAngleMax = Units.rotationsToRadians(0.2);
         public static final double speakerShooterAngleMin = Units.rotationsToRadians(0.0);
         public static final double speakerAutoOmegaMax = Units.degreesToRadians(15);
