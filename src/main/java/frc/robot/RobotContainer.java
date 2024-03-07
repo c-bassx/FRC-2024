@@ -55,6 +55,7 @@ public class RobotContainer {
         configureButtonBindings();
 
         DriverStation.silenceJoystickConnectionWarning(true);
+        databoard.getCommand().schedule();
     }
 
     /**
