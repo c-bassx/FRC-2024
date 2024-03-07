@@ -6,11 +6,40 @@ import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.lib.math.Conversions;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Vision {
+public class Vision extends SubsystemBase {
     private static final NetworkTable limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
     private static final NetworkTable rpiTable = NetworkTableInstance.getDefault().getTable("raspberrypi");
+
+    private final SendableChooser<InstantCommand> pipelineSelector = new SendableChooser<>();
+    private Kinesthetics kinesthetics;
+
+    public Vision(Kinesthetics k) {
+        this.kinesthetics = k;
+
+        pipelineSelector.setDefaultOption("Limelight Pipeline 0", new InstantCommand(() -> Vision.switchToPipeline(0)));
+        pipelineSelector.addOption("Limelight Pipeline 1", new InstantCommand(() -> Vision.switchToPipeline(1)));
+
+        // Add limelight pipeline selector
+        Shuffleboard.getTab("Vision")
+            .add("Vision", pipelineSelector)
+            .withWidget(BuiltInWidgets.kComboBoxChooser);
+    }
+
+    @Override
+    public void periodic() {
+        // Compare odometry and limelight pose
+        SmartDashboard.putNumber("Pose distance difference",
+            kinesthetics.getPose().getTranslation().getDistance(Vision.getBotPose().getTranslation().toTranslation2d())
+        );
+    }
 
     public static Pose3d getBotPose() {
         if (!limelightTable.getEntry("botpose").exists()) return null;
