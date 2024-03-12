@@ -1,20 +1,19 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkBase;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-import com.revrobotics.CANSparkMax;
 
 // import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.configs.REVConfigs;
 
 public class Deflector extends SubsystemBase{
-    private CANSparkMax angleMotorController;
+    private CANSparkBase angleMotorController;
 
     public Deflector() {
-        angleMotorController = new CANSparkMax(Constants.Deflector.motorID, MotorType.kBrushless);
+        angleMotorController = REVConfigs.getMotorController("deflectorMotor");
     }
 
     // /** @return radians */

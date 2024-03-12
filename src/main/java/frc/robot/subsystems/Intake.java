@@ -1,9 +1,6 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkBase;
-import com.revrobotics.CANSparkFlex;
-import com.revrobotics.CANSparkLowLevel;
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkAbsoluteEncoder;
 
 import edu.wpi.first.math.MathUtil;
@@ -12,15 +9,17 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.SpinState;
+import frc.robot.configs.REVConfigs;
 
 public class Intake extends SubsystemBase {
     private CANSparkBase angleMotorController, intakeMotorController, feederMotorController;
 
     public Intake() {
-        angleMotorController = new CANSparkFlex(Constants.Intake.angleMotorID, CANSparkLowLevel.MotorType.kBrushless);
-        intakeMotorController = new CANSparkFlex(Constants.Intake.intakeMotorID, CANSparkLowLevel.MotorType.kBrushless);
+        angleMotorController = REVConfigs.getMotorController("intakeAngle");
+        intakeMotorController = REVConfigs.getMotorController("intakeMotor");
+        feederMotorController = REVConfigs.getMotorController("intakeFeeder");
+
         intakeMotorController.setInverted(true);
-        feederMotorController = new CANSparkMax(Constants.Intake.feederMotorID, CANSparkLowLevel.MotorType.kBrushless);
     }
     
     /** @return radians */

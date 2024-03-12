@@ -267,4 +267,48 @@ public final class Constants {
             multiplier = mult;
         }
     }
+
+    public static final class PIDConstants { // TODO: Add proper PID constants for each subsystem
+        public static final class Shooter {
+            public static final class AngleMotor {
+                public static final double kP = 0.0;
+                public static final double kI = 0.0;
+                public static final double kD = 0.0;
+            }
+
+            public static final class LeftMotor {
+                public static final double kP = 0.0;
+                public static final double kI = 0.0;
+                public static final double kD = 0.0;                
+            }
+
+            public static final class RightMotor {
+                public static final double kP = 0.0;
+                public static final double kI = 0.0;
+                public static final double kD = 0.0;                
+            }
+        }
+
+        public static final class Intake {
+            public static final class AngleMotor {
+                public static final double kP = 0.0;
+                public static final double kI = 0.0;
+                public static final double kD = 0.0;
+            }
+
+            public static final class IntakeMotor {
+                public static final double kP = 0.0;
+                public static final double kI = 0.0;
+                public static final double kD = 0.0;
+            }
+        }
+
+        public static final class Deflector {
+            public static final class DeflectorMotor {
+                public static final double kP = 0.0;
+                public static final double kI = 0.0;
+                public static final double kD = 0.0;
+            }
+        }
+    }
 }
