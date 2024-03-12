@@ -22,8 +22,8 @@ public class Robot extends TimedRobot {
   private LED led = new LED();
   private Joystick joystick = new Joystick(1);
 
-  private JoystickButton whiteLED = new JoystickButton(joystick, 1);
-  private JoystickButton blackLED = new JoystickButton(joystick, 2);
+  private JoystickButton whiteLED = new JoystickButton(joystick, Constants.LED.whiteJoystickButton);
+  private JoystickButton blackLED = new JoystickButton(joystick, Constants.LED.blackJoystickButton);
 
 
   /**
