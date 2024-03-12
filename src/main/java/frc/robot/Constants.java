@@ -7,5 +7,8 @@ public final class Constants {
 
     public static final int port = 0;
     public static final int length = 300;
+
+    public static final int whiteJoystickButton = 1;
+    public static final int blackJoystickButton = 2;
   }
 }
