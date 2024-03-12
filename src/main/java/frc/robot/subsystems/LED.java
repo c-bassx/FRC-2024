@@ -23,7 +23,6 @@ public class LED extends SubsystemBase {
     private AddressableLEDBuffer buffer; // Buffer to store LED data
     private LEDState state = LEDState.BLACK; // Default state
 
-
     /**
      * Constructor for the LED subsystem
      * Initializes the LED strip and its buffer, and sets up commands for each state
