@@ -41,7 +41,7 @@ public class LED extends SubsystemBase {
         commands.put(LEDState.ORANGE, new InstantCommand(() -> setLED(254, 153, 0)));
         commands.put(LEDState.RED, new InstantCommand(() -> setLED(255, 0, 0)));
         commands.put(LEDState.GREEN, new InstantCommand(() -> setLED(0, 255, 0)));
-        commands.put(LEDState.DARK_BLUE, new Instant Command(() -> setLED(2, 11, 150)));
+        commands.put(LEDState.DARK_BLUE, new InstantCommand(() -> setLED(2, 11, 150)));
 
     }
 
