@@ -13,7 +13,7 @@ import frc.robot.Constants;
 public class LED extends SubsystemBase {
     // Enumeration for LED states
     public enum LEDState {
-        WHITE, BLACK // Add more states here
+        WHITE, BLACK, YELLOW, LIGHT_BLUE, ORANGE, // Add more states here
     }
 
     // Map to store the commands corresponding to each LED state
@@ -36,6 +36,10 @@ public class LED extends SubsystemBase {
         commands.put(LEDState.WHITE, new InstantCommand(() -> setLED(75, 75, 75), this));
         commands.put(LEDState.BLACK, new InstantCommand(() -> setLED(0, 0, 0), this));
         // Add more commands here
+        commands.put(LEDState.YELLOW, new InstantCommand(() -> setLED(248, 211, 7)));
+        commands.put(LEDState.LIGHT_BLUE, new InstantCommand(() -> setLED(69, 146, 213)));
+        commands.put(LEDState.ORANGE, new InstantCommand(() -> setLED(254, 153, 0)));
+
     }
 
     /**
