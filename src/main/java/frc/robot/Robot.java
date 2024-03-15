@@ -32,8 +32,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    whiteLED.onTrue(new InstantCommand(() -> led.setState(LEDState.WHITE)));
-    blackLED.onTrue(new InstantCommand(() -> led.setState(LEDState.BLACK)));
+    // Set initial LED state
+    led.setState(LEDState.WHITE);
+
+    configureButtonBindings();
   }
 
   /**
@@ -50,6 +52,11 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+  }
+
+  private void configureButtonBindings() {
+    whiteLED.onTrue(new InstantCommand(() -> led.setState(LEDState.WHITE)));
+    blackLED.onTrue(new InstantCommand(() -> led.setState(LEDState.BLACK)));
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
